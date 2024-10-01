@@ -1,30 +1,104 @@
+/* Login Page Styling */
 .auth-container {
-    border: 1px solid gray;
-    margin: 3rem 15rem;
-    padding: 2rem;
-    border-radius: 1rem;
-  }
-  
-  .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff7f50 0%, #1e1e1e 100%);
+  font-family: "Arial", sans-serif;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1); /* Glass effect */
+  backdrop-filter: blur(15px); /* Blurred background */
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.glass-card h1 {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 10px;
+  text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.glass-card h2 {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 30px;
+}
+
+.auth-fieldset {
+  margin-bottom: 20px;
+}
+
+.auth-form-input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 20px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2); /* Glass input */
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  font-size: 1em;
+  transition: all 0.3s ease;
+}
+
+.auth-form-input:focus {
+  border: 1px solid #ff7f50;
+  box-shadow: 0 4px 10px rgba(255, 127, 80, 0.6);
+  outline: none;
+}
+
+.auth-button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 30px;
+  border: none;
+  background-color: #ff7f50;
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.auth-button:hover {
+  background-color: #ff6347; /* Slightly darker coral */
+}
+
+.register-link {
+  margin-top: 20px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9em;
+  display: block; /* Ensures it's a block element below the form */
+  width: 100%; /* Full width to align with form */
+}
+
+.register-link a {
+  color: #ff7f50;
+  font-weight: bold;
+}
+
+.register-link a:hover {
+  color: #ff6347; /* Darker coral on hover */
+}
+
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .glass-card h1 {
     font-size: 2rem;
   }
-  
-  .auth-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+  .glass-card h2 {
+    font-size: 1rem;
   }
-  
-  .auth-form-input {
-    padding: 0.25rem;
-  }
-  
-  .register-link {
-    text-align: center;
-  }
-  
-  .auth-fieldset {
-    margin: 0.25rem 0rem;
-    border: none;
-  }
-  
+}

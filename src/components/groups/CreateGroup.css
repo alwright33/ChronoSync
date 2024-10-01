@@ -1,0 +1,81 @@
+/* Main container for the Create Group page */
+.create-group-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff7f50 0%, #1e1e1e 100%);
+    font-family: "Arial", sans-serif;
+  }
+  
+  /* Glass-like card for the form */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    color: white;
+  }
+  
+  .glass-card h2 {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 20px;
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Label for input */
+  .form-label {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  /* Input field */
+  .input-field {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 20px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    font-size: 1em;
+    transition: all 0.3s ease;
+  }
+
+  .input-field:focus {
+    border: none;
+    box-shadow: 0 4px 10px rgba(255, 127, 80, 0.6);
+    outline: none;
+  }
+  
+  .submit-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    border-radius: 30px;
+    border: none;
+    background-color: #ff7f50;
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .submit-button:hover {
+    background-color: #ff6347;
+  }
+  
+  .error-message {
+    color: #ff4c4c;
+    margin-top: 15px;
+    font-size: 0.9em;
+  }
