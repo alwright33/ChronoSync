@@ -1,5 +1,5 @@
 export const getEvents = () => {
-  return fetch(`http://localhost:8088/events`).then((response) =>
+  return fetch(`http://localhost:8088/events?_expand=user`).then((response) =>
     response.json()
   );
 };

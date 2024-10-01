@@ -4,26 +4,56 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import "./Calendar.css";
 import { getEvents, postEvent } from "../../services/EventServices";
+import { getCategories } from "../../services/categoryServices";
 
 export const CalendarComponent = () => {
   const [events, setEvents] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
+  const [eventDetailsModalVisible, setEventDetailsModalVisible] =
+    useState(false);
   const [newEvent, setNewEvent] = useState({
     title: "",
     start: "",
     end: "",
     time: "",
+    categoryId: "",
     recurring: false,
     frequency: "daily",
+    createdAt: "",
   });
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   useEffect(() => {
     fetchEventsFromDatabase();
+    fetchCategoriesFromDatabase();
   }, []);
 
   const fetchEventsFromDatabase = () => {
     getEvents().then((fetchedEvents) => {
-      setEvents(fetchedEvents);
+      const formattedEvents = fetchedEvents.map((event) => ({
+        id: event.id,
+        title: event.title,
+        start: event.start,
+        end: event.end,
+        extendedProps: {
+          description: event.description,
+          user: event.user,
+          recurring: event.recurring,
+          frequency: event.frequency,
+          createdAt: event.createdAt,
+          categoryId: event.categoryId,
+          time: event.time,
+        },
+      }));
+
+      setEvents(formattedEvents);
+    });
+  };
+
+  const fetchCategoriesFromDatabase = () => {
+    getCategories().then((fetchedCategories) => {
+      setCategories(fetchedCategories);
     });
   };
 
@@ -34,6 +64,28 @@ export const CalendarComponent = () => {
 
   const handleCloseModal = () => {
     setModalVisible(false);
+  };
+
+  const handleEventClick = (clickInfo) => {
+    const clickedEvent = {
+      id: clickInfo.event.id,
+      title: clickInfo.event.title,
+      start: clickInfo.event.startStr,
+      end: clickInfo.event.endStr || "N/A",
+      description: clickInfo.event.extendedProps.description || "N/A",
+      user: clickInfo.event.extendedProps.user || {},
+      recurring: clickInfo.event.extendedProps.recurring,
+      frequency: clickInfo.event.extendedProps.frequency || "N/A",
+      createdAt: clickInfo.event.extendedProps.createdAt || "N/A",
+      time: clickInfo.event.extendedProps.time || "N/A",
+    };
+
+    setSelectedEvent(clickedEvent);
+    setEventDetailsModalVisible(true);
+  };
+
+  const handleCloseEventDetailsModal = () => {
+    setEventDetailsModalVisible(false);
   };
 
   const handleSubmitEvent = () => {
@@ -71,8 +123,10 @@ export const CalendarComponent = () => {
             right: "dayGridMonth,dayGridWeek",
           }}
           dateClick={handleDateClick}
+          eventClick={handleEventClick}
         />
       </div>
+
       {modalVisible && (
         <div className="modal">
           <div className="modal-content">
@@ -154,8 +208,66 @@ export const CalendarComponent = () => {
                 </>
               )}
               <br />
+              <label>
+                Category:
+                <select
+                  name="categoryId"
+                  value={newEvent.categoryId}
+                  onChange={handleInputChange}
+                  required
+                >
+                  <option value="">Select Category</option>
+                  {categories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <br />
               <button type="submit">Add Event</button>
             </form>
+          </div>
+        </div>
+      )}
+      {eventDetailsModalVisible && selectedEvent && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={handleCloseEventDetailsModal}>
+              &times;
+            </span>
+            <h2>Event Details</h2>
+            <p>
+              <strong>Title:</strong> {selectedEvent.title}
+            </p>
+            <p>
+              <strong>Description:</strong> {selectedEvent.description || "N/A"}
+            </p>
+            <p>
+              <strong>User:</strong> {selectedEvent.user.firstName}{" "}
+              {selectedEvent.user.lastName}
+            </p>
+            <p>
+              <strong>Start Date:</strong> {selectedEvent.start}
+            </p>
+            <p>
+              <strong>End Date:</strong> {selectedEvent.end || "N/A"}
+            </p>
+            <p>
+              <strong>Time:</strong> {selectedEvent.time || "N/A"}
+            </p>
+            <p>
+              <strong>Recurring:</strong>{" "}
+              {selectedEvent.recurring ? "Yes" : "No"}
+            </p>
+            {selectedEvent.recurring && (
+              <p>
+                <strong>Frequency:</strong> {selectedEvent.frequency}
+              </p>
+            )}
+            <p>
+              <strong>Created At:</strong> {selectedEvent.createdAt}
+            </p>
           </div>
         </div>
       )}
