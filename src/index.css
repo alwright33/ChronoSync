@@ -1,106 +1,54 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Quicksand&family=Roboto:wght@100&display=swap");
-
-:root {
-  --primary: #41bbf3;
-  --secondary: #00a6ed;
-  --info: #7fb800;
-  --warning: #f6511d;
-  --white: #ffffff;
-  --offWhite: #f2f2f3;
-  --dark: #3b3b3b;
-  --outline: #c3c0c0;
-  --appBackground: #dddade;
-}
-
-body,
-button,
-input,
-select,
-textarea {
-  font-family: "Nunito", sans-serif;
-}
-
-body {
-  background-color: var(--appBackground);
+/* Global Reset */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* This prevents all the links in the app from having default underline */
-a {
-  text-decoration: none;
-  color: inherit;
-}
-/* This prevents all the links in the app from turning purple after visiting */
-a:visited {
-  color: inherit;
-}
-/* This prevents all the inputs in the app from having that blue outline when in focus */
-input:focus {
-  outline: none;
-}
-
-/* GLOBAL STYLING FOR ALL THE BUTTONS BUTTONS */
-button {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  
-}
-
-/* These are all the color options for the buttons */
-/* If you change the color variables, be sure to change the hover colors to be a darker shade of the colors you chose*/
-.btn-primary {
-  background-color: var(--primary);
-}
-
-.btn-primary:hover {
-  background-color: #e5a000;
-}
-
-.btn-secondary {
-  background-color: var(--secondary);
-}
-
-.btn-secondary:hover {
-  background-color: #0097d7;
-}
-
-.btn-warning {
-  background-color: var(--warning);
-}
-
-.btn-edit {
-  background-color: var(--secondary);
-  color: white;
+html, body {
   margin: 0;
-  padding: 0.5rem 2rem;
-  white-space: nowrap;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
 }
 
-.btn-edit:hover {
-  background-color: rgb(76, 76, 248);
+html {
+    background: linear-gradient(135deg, #2c3e50, #34495e)
+}
+/* Universal container with padding */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.btn-info:hover {
-  background-color: #71a500;
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: #ff7e5f;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
 }
 
-.btn-heart {
-  color: red;
-  background: none; /* Removes the background */
-  border: none;     /* Removes the border */
-  padding: 0;       /* Removes the padding */
-  margin: 0;        /* Removes the margin */
-  font-size: 20px;  /* Adjust size of the heart icon */
-  cursor: pointer;
-  padding-right: .2rem;
+p {
+  color: #e0e0e0;
+  line-height: 1.6;
 }
 
-.btn-heart:hover {
-  color: rgb(197, 11, 11);
+/* Header Styles */
+header {
+  background: linear-gradient(135deg, #263238, #37474f);
+  padding: 20px 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-
-
-
+header h1 {
+  font-size: 2.5rem;
+  color: #fff;
+  text-align: center;
+}
