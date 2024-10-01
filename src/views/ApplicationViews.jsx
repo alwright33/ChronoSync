@@ -5,6 +5,7 @@ import { Home } from "../components/home/Home";
 import { CalendarComponent } from "../components/calendar/Calendar";
 import { useState, useEffect } from "react";
 import { UserGroups } from "../components/groups/UserGroups";
+import { CreateGroup } from "../components/groups/CreateGroup";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -37,6 +38,7 @@ export const ApplicationViews = () => {
           path="groups"
           element={<UserGroups currentUser={currentUser} />}
         />
+        <Route path="create-group" element={<CreateGroup />} />
       </Route>
     </Routes>
   );

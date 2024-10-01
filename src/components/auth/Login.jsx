@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getUserByEmail } from "../../services/userServices";
+import "./Login.css"; // Custom CSS for the login page
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -35,7 +36,7 @@ export const Login = () => {
 
   return (
     <main className="auth-container">
-      <section>
+      <section className="glass-card">
         <form className="auth-form" onSubmit={handleLogin}>
           <h1 className="header">ChronoSync</h1>
           <h2>Please sign in</h2>
@@ -66,13 +67,17 @@ export const Login = () => {
           </fieldset>
           <fieldset className="auth-fieldset">
             <div>
-              <button type="submit">Sign in</button>
+              <button type="submit" className="auth-button">
+                Sign in
+              </button>
             </div>
           </fieldset>
         </form>
-      </section>
-      <section className="register-link">
-        Not a member? <Link to="/register">Click here to sign up.</Link>
+
+        {/* Place the register link inside the same container */}
+        <section className="register-link">
+          Not a member? <Link to="/register">Click here to sign up.</Link>
+        </section>
       </section>
     </main>
   );
