@@ -8,23 +8,23 @@ import { getEvents, postEvent } from "../../services/EventServices";
 export const CalendarComponent = () => {
   const [events, setEvents] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
-  const [newEvent, setNewEvent] = useState({ title: "", start: "" });
+  const [newEvent, setNewEvent] = useState({
+    title: "",
+    start: "",
+    end: "",
+    time: "",
+    recurring: false,
+    frequency: "daily",
+  });
 
-  // Fetch events from the database when the component mounts
   useEffect(() => {
     fetchEventsFromDatabase();
   }, []);
 
-  // Fetch events function
   const fetchEventsFromDatabase = () => {
-    getEvents()
-      .then((fetchedEvents) => {
-        console.log("Fetched events:", fetchedEvents); // Debugging
-        setEvents(fetchedEvents); // Set the fetched events into the state
-      })
-      .catch((error) => {
-        console.error("Error fetching events: ", error);
-      });
+    getEvents().then((fetchedEvents) => {
+      setEvents(fetchedEvents);
+    });
   };
 
   const handleDateClick = (info) => {
@@ -37,17 +37,24 @@ export const CalendarComponent = () => {
   };
 
   const handleSubmitEvent = () => {
-    setEvents([...events, newEvent]); // Optimistically add the new event to the state
+    const eventToSubmit = {
+      ...newEvent,
+      createdAt: new Date().toISOString(),
+    };
+
+    setEvents([...events, eventToSubmit]);
     setModalVisible(false);
-    postEvent(newEvent)
-      .then((createdEvent) => {
-        console.log("Event posted successfully:", createdEvent); // Debugging
-        // Re-fetch the events from the database to ensure it's properly saved
-        fetchEventsFromDatabase();
-      })
-      .catch((error) => {
-        console.error("Error posting event:", error);
-      });
+    postEvent(eventToSubmit).then(() => {
+      fetchEventsFromDatabase();
+    });
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setNewEvent((prevEvent) => ({
+      ...prevEvent,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
 
   return (
@@ -57,7 +64,7 @@ export const CalendarComponent = () => {
           plugins={[dayGridPlugin, interactionPlugin]}
           editable={true}
           selectable={true}
-          events={events} // Event data fetched from the database
+          events={events}
           headerToolbar={{
             left: "prev,next today",
             center: "title",
@@ -66,7 +73,6 @@ export const CalendarComponent = () => {
           dateClick={handleDateClick}
         />
       </div>
-
       {modalVisible && (
         <div className="modal">
           <div className="modal-content">
@@ -84,17 +90,69 @@ export const CalendarComponent = () => {
                 Event Title:
                 <input
                   type="text"
+                  name="title"
                   value={newEvent.title}
-                  onChange={(e) =>
-                    setNewEvent({ ...newEvent, title: e.target.value })
-                  }
+                  onChange={handleInputChange}
                   required
                 />
               </label>
               <br />
               <label>
-                Date: <strong>{newEvent.start}</strong>
+                Start Date:
+                <input
+                  type="date"
+                  name="start"
+                  value={newEvent.start}
+                  onChange={handleInputChange}
+                  required
+                />
               </label>
+              <br />
+              <label>
+                End Date:
+                <input
+                  type="date"
+                  name="end"
+                  value={newEvent.end}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <br />
+              <label>
+                Start Time:
+                <input
+                  type="time"
+                  name="time"
+                  value={newEvent.time}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <br />
+              <label>
+                <input
+                  type="checkbox"
+                  name="recurring"
+                  checked={newEvent.recurring}
+                  onChange={handleInputChange}
+                />
+                Recurring Event
+              </label>
+              {newEvent.recurring && (
+                <>
+                  <label>
+                    Frequency:
+                    <select
+                      name="frequency"
+                      value={newEvent.frequency}
+                      onChange={handleInputChange}
+                    >
+                      <option value="daily">Daily</option>
+                      <option value="weekly">Weekly</option>
+                      <option value="monthly">Monthly</option>
+                    </select>
+                  </label>
+                </>
+              )}
               <br />
               <button type="submit">Add Event</button>
             </form>
