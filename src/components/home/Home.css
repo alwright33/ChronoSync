@@ -1,0 +1,163 @@
+.home-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensures full viewport height */
+  background: rgba(0, 0, 0, 0.4); /* Darker, transparent overlay */
+  border-radius: 20px;
+  box-shadow: 0px 25px 50px rgba(0, 0, 0, 0.4); /* Deeper shadow for depth */
+  text-align: center;
+  overflow: hidden;
+  position: relative; /* For floating elements */
+}
+
+/* Radial floating gradients */
+.home-container::before, .home-container::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.home-container::before {
+  top: -50px;
+  left: -50px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #ff7e5f, #feb47b);
+  animation: float 4s infinite alternate ease-in-out;
+}
+
+.home-container::after {
+  bottom: -50px;
+  right: 0px;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, #43cea2, #185a9d);
+  animation: float 6s infinite alternate ease-in-out;
+}
+
+/* Elegant Heading with Depth */
+.welcome-heading {
+  font-size: 4rem;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 1;
+  transform: translateZ(20px);
+}
+
+/* Sub Heading */
+.sub-heading {
+  font-size: 1.6rem;
+  color: #e0e0e0;
+  font-weight: 400;
+  margin-bottom: 35px;
+  text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Stylish Paragraphs */
+.chrono-info p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #ffffff;
+  margin-bottom: 20px;
+  padding: 20px 25px;
+  background: rgba(0, 0, 0, 0.5); /* Darker background */
+  backdrop-filter: blur(8px);
+  border-radius: 15px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Hover Effects */
+.chrono-info p:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Feature Cards with Depth */
+.features-section {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.feature-card {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 25px;
+  border-radius: 15px;
+  width: 30%;
+  margin: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+  text-align: center;
+  position: relative;
+}
+
+.feature-card:hover {
+  transform: translateY(-15px) rotate(2deg);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.feature-card h4 {
+  font-size: 1.8rem;
+  color: #fdd835;
+  margin-bottom: 15px;
+  text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.feature-card p {
+  font-size: 1.1rem;
+  color: #dddddd;
+  font-weight: 300;
+}
+
+/* Animations */
+@keyframes float {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(15px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .feature-card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .features-section {
+    flex-direction: column;
+  }
+
+  .welcome-heading {
+    font-size: 2.5rem;
+  }
+}

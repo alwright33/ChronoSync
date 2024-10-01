@@ -1,0 +1,160 @@
+/* Modern Navbar Styles */
+.navbar {
+  background-color: #2c3e50;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  font-family: "Poppins", sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Creative Menu Button */
+.menu-btn {
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-logout{
+  list-style-type: none;
+}
+
+.menu-btn:hover {
+  background-color: #ff6f61;
+  transform: scale(1.1);
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  background-color: #34495e;
+  border-radius: 15px;
+  padding: 15px 0;
+  width: 250px;
+  animation: fadeIn 0.5s ease forwards;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.dropdown-menu ul li {
+  padding: 10px 20px;
+}
+
+.dropdown-menu ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-menu ul li a:hover {
+  background-color: #ff7e5f;
+  border-radius: 10px;
+}
+
+/* Navbar Links */
+.navbar-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+  color: #ff7e5f;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .navbar-item-group {
+    display: none;
+  }
+
+  .dropdown-menu {
+    width: 100%;
+    left: 0;
+  }
+}
+
+.chronosync-title {
+  font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: 4px;
+  color: #ff7e5f;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  margin: 0;
+  padding: 10px;
+}
+
+.chrono-part {
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: transform 0.3s ease-in-out;
+}
+
+.sync-part {
+  background: linear-gradient(90deg, #43cea2, #185a9d);
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Adding hover effect for more interactivity */
+.chrono-part:hover, .sync-part:hover {
+  transform: scale(1.1);
+}
+
+.logo-img {
+  width: 75px;
+  height: auto;
+  margin-left: 10px;
+  animation: rotateLogo 5s infinite linear; /* Subtle animation for the logo */
+}
+
+@keyframes rotateLogo {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
