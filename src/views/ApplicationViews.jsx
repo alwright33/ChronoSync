@@ -2,9 +2,9 @@ import { NavBar } from "../components/nav/NavBar";
 import { Route, Routes } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { Home } from "../components/home/Home";
-import { CalendarComponent } from "../components/calendar/Calendar"; // Import the Calendar component
+import { CalendarComponent } from "../components/calendar/Calendar";
 import { useState, useEffect } from "react";
-import { UserGroups } from "../components/users/UserGroups";
+import { UserGroups } from "../components/groups/UserGroups";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -13,7 +13,7 @@ export const ApplicationViews = () => {
     const localChronoUser = localStorage.getItem("chrono_user");
     if (localChronoUser) {
       const chronoUserObject = JSON.parse(localChronoUser);
-      setCurrentUser(chronoUserObject); // Correctly setting current user
+      setCurrentUser(chronoUserObject);
     }
   }, []);
 
