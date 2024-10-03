@@ -8,7 +8,7 @@ import { getCategories } from "../../services/categoryServices";
 import { EventCreationModal } from "./EventCreationModal";
 import { EventDetailsModal } from "./EventDetailsModal";
 
-export const CalendarComponent = () => {
+export const CalendarComponent = ({ currentUser }) => {
   const [events, setEvents] = useState([]);
   const [categories, setCategories] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
@@ -20,6 +20,7 @@ export const CalendarComponent = () => {
     end: "",
     time: "",
     categoryId: "",
+    userId: currentUser.id,
     recurring: false,
     frequency: "daily",
     createdAt: "",
@@ -45,6 +46,7 @@ export const CalendarComponent = () => {
           frequency: event.frequency,
           createdAt: event.createdAt,
           categoryId: event.categoryId,
+          userId: event.userId,
           time: event.time,
         },
       }));
@@ -74,12 +76,13 @@ export const CalendarComponent = () => {
       title: clickInfo.event.title,
       start: clickInfo.event.startStr,
       end: clickInfo.event.endStr || "N/A",
-      description: clickInfo.event.extendedProps.description || "N/A",
-      user: clickInfo.event.extendedProps.user || {},
-      recurring: clickInfo.event.extendedProps.recurring,
-      frequency: clickInfo.event.extendedProps.frequency || "N/A",
-      createdAt: clickInfo.event.extendedProps.createdAt || "N/A",
-      time: clickInfo.event.extendedProps.time || "N/A",
+      description:
+        clickInfo.event.extendedProps?.description || "No description provided",
+      userId: clickInfo.event.extendedProps?.userId || "N/A",
+      recurring: clickInfo.event.extendedProps?.recurring ? "Yes" : "No",
+      frequency: clickInfo.event.extendedProps?.frequency || "N/A",
+      createdAt: clickInfo.event.extendedProps?.createdAt || "N/A",
+      time: clickInfo.event.extendedProps?.time || "N/A",
     };
 
     setSelectedEvent(clickedEvent);

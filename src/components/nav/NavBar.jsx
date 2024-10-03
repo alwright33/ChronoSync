@@ -37,12 +37,12 @@ export const NavBar = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/myschedule" onClick={toggleDropdown}>
+                <Link to="/my-schedule" onClick={toggleDropdown}>
                   My Schedule
                 </Link>
               </li>
               <li>
-                <Link to="/createevent" onClick={toggleDropdown}>
+                <Link to="/create-event" onClick={toggleDropdown}>
                   Create Event
                 </Link>
               </li>

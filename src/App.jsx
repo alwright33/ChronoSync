@@ -13,7 +13,6 @@ export const App = () => {
       <Route
         path="*"
         element={
-          // check if user is authorized
           <Authorized>
             <ApplicationViews />
           </Authorized>

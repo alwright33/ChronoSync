@@ -6,6 +6,7 @@ import { CalendarComponent } from "../components/calendar/Calendar";
 import { useState, useEffect } from "react";
 import { UserGroups } from "../components/groups/UserGroups";
 import { CreateGroup } from "../components/groups/CreateGroup";
+import { MySchedule } from "../components/schedules/MySchedule";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -41,6 +42,10 @@ export const ApplicationViews = () => {
         <Route
           path="create-group"
           element={<CreateGroup currentUser={currentUser} />}
+        />
+        <Route
+          path="my-schedule"
+          element={<MySchedule currentUser={currentUser} />}
         />
       </Route>
     </Routes>
