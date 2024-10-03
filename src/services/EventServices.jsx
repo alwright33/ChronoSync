@@ -13,3 +13,11 @@ export const postEvent = (newEvent) => {
     body: JSON.stringify(newEvent),
   }).then((response) => response.json());
 };
+
+export const getGroupEvents = (groupId) => {
+  return fetch(
+    `http://localhost:8088/groupEvents?groupId=${groupId}&_expand=event`
+  )
+    .then((response) => response.json())
+    .then((groupEvents) => groupEvents.map((ge) => ge.event)); // return the associated events
+};
