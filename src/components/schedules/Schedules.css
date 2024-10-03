@@ -1,0 +1,89 @@
+/* Container styling */
+.schedule-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #282c34;
+    border-radius: 10px;
+    color: #f0f0f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Header styling */
+  .schedule-header h1 {
+    font-size: 28px;
+    color: #61dafb;
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #61dafb;
+    padding-bottom: 10px;
+  }
+  
+  /* List container */
+  .schedule-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .schedule-list li {
+    margin-bottom: 25px;
+  }
+  
+  /* Event item styling */
+  .event-item {
+    background-color: #3a3f47;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #61dafb;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .event-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Event details styling */
+  .event-item h2 {
+    margin: 0 0 15px 0;
+    font-size: 22px;
+    color: #61dafb;
+  }
+  
+  .event-item p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #b0b0b0;
+    line-height: 1.5;
+  }
+  
+  /* Strong text styling */
+  .event-item strong {
+    color: #61dafb;
+  }
+  
+  /* No scheduled events message */
+  .no-events {
+    font-size: 20px;
+    color: #a0a0a0;
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 600px) {
+    .schedule-container {
+      padding: 15px;
+    }
+  
+    .event-item h2 {
+      font-size: 20px;
+    }
+  
+    .event-item p {
+      font-size: 14px;
+    }
+  }
+  

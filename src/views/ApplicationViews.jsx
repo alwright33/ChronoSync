@@ -2,11 +2,11 @@ import { NavBar } from "../components/nav/NavBar";
 import { Route, Routes } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { Home } from "../components/home/Home";
-import { CalendarComponent } from "../components/calendar/Calendar";
 import { useState, useEffect } from "react";
 import { UserGroups } from "../components/groups/UserGroups";
 import { CreateGroup } from "../components/groups/CreateGroup";
 import { MySchedule } from "../components/schedules/MySchedule";
+import { CalendarPage } from "../components/calendar/Calendar";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -33,7 +33,7 @@ export const ApplicationViews = () => {
         <Route path="/" element={<Home />} />
         <Route
           path="calendar"
-          element={<CalendarComponent currentUser={currentUser} />}
+          element={<CalendarPage currentUser={currentUser} />}
         />
         <Route
           path="groups"
