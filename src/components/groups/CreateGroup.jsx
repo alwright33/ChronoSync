@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createGroup, addUserToGroup } from "../../services/groupServices";
-import "./CreateGroup.css"; // Importing the new CSS for styling
+import "./CreateGroup.css";
 
 export const CreateGroup = ({ currentUser }) => {
   const [groupName, setGroupName] = useState("");
@@ -17,13 +17,20 @@ export const CreateGroup = ({ currentUser }) => {
       setError("Group name is required");
       return;
     }
+    createGroup({ name: groupName })
+      .then((newGroup) => {
+        if (!newGroup || !newGroup.id) {
+          throw new Error("Failed to retrieve group ID from response");
+        }
 
-    createGroup({ name: groupName }).then((newGroup) => {
-      addUserToGroup({
-        userId: currentUser.id,
-        groupId: newGroup.id,
+        return addUserToGroup({
+          userId: currentUser.id,
+          groupId: newGroup.id,
+        });
+      })
+      .then(() => {
+        console.log("Group created and user added");
       });
-    });
   };
 
   return (

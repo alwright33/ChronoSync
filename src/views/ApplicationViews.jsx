@@ -38,7 +38,10 @@ export const ApplicationViews = () => {
           path="groups"
           element={<UserGroups currentUser={currentUser} />}
         />
-        <Route path="create-group" element={<CreateGroup />} />
+        <Route
+          path="create-group"
+          element={<CreateGroup currentUser={currentUser} />}
+        />
       </Route>
     </Routes>
   );
