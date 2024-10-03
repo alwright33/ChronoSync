@@ -51,7 +51,6 @@
   color: #fff;
 }
 
-/* Calendar Day Styles */
 .fc th {
   background-color: rgba(255, 126, 95, 0.9);
   color: white;
@@ -93,7 +92,6 @@
 }
 
 
-/* Modal Styles */
 .modal {
   display: flex;
   justify-content: center;
@@ -123,7 +121,7 @@
   margin-bottom: 20px;
   font-size: 2em;
   color: #fff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
 }
 
 .modal-content p {
@@ -133,9 +131,9 @@
 
 .modal-content button {
   padding: 10px 20px;
-  background: #ff7f50; /* Coral color */
+  background: #ff7f50; 
   border: none;
-  border-radius: 30px; /* Rounded button */
+  border-radius: 30px; 
   color: #fff;
   font-weight: bold;
   cursor: pointer;
@@ -173,51 +171,50 @@
 }
 
 
-/* Input and Dropdown Styles */
 .modal-content input[type="text"],
 .modal-content input[type="date"],
 .modal-content input[type="time"],
 .modal-content select {
-  width: 100%; /* Full width */
+  width: 100%; 
   padding: 10px;
   margin: 10px 0;
-  border-radius: 20px; /* Rounded corners */
-  background: rgba(30, 30, 30, 0.8); /* Dark background for input and select */
-  backdrop-filter: blur(10px); /* Glass effect */
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
-  color: #fff; /* White text */
+  border-radius: 20px; 
+  background: rgba(30, 30, 30, 0.8); 
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff; 
   outline: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
   font-size: 1em;
   transition: all 0.3s ease;
 }
 
 .modal-content input::placeholder {
-  color: rgba(255, 255, 255, 0.7); /* Placeholder text color */
+  color: rgba(255, 255, 255, 0.7); 
 }
 
 .modal-content input:focus,
 .modal-content select:focus {
-  border-color: #ff7f50; /* Coral color on focus */
-  box-shadow: 0 4px 15px rgba(255, 127, 80, 0.6); /* Shadow on focus */
+  border-color: #ff7f50;
+  box-shadow: 0 4px 15px rgba(255, 127, 80, 0.6);
 }
 
 .modal-content select {
-  appearance: none; /* Removes default arrow for dropdowns */
-  background-image: url('data:image/svg+xml;base64,...'); /* Custom dropdown arrow */
+  appearance: none; 
+  background-image: url('data:image/svg+xml;base64,...'); 
   background-repeat: no-repeat;
   background-position: right 10px center;
   background-size: 15px;
-  color: #fff; /* White text for options */
+  color: #fff; 
 }
 
 .modal-content option {
-  background: #333; /* Dark background for dropdown options */
-  color: #fff; /* White text for options */
+  background: #333;
+  color: #fff; 
 }
 
 .modal-content input[type="checkbox"] {
   width: auto;
   margin-right: 10px;
-  accent-color: #ff7f50; /* Coral color for checkbox */
+  accent-color: #ff7f50;
 }
