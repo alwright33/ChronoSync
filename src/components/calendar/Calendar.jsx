@@ -5,6 +5,8 @@ import interactionPlugin from "@fullcalendar/interaction";
 import "./Calendar.css";
 import { getEvents, postEvent } from "../../services/EventServices";
 import { getCategories } from "../../services/categoryServices";
+import { EventCreationModal } from "./EventCreationModal";
+import { EventDetailsModal } from "./EventDetailsModal";
 
 export const CalendarComponent = () => {
   const [events, setEvents] = useState([]);
@@ -25,11 +27,11 @@ export const CalendarComponent = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
 
   useEffect(() => {
-    fetchEventsFromDatabase();
-    fetchCategoriesFromDatabase();
+    fetchAndRenderEvents();
+    fetchAndRenderCategories();
   }, []);
 
-  const fetchEventsFromDatabase = () => {
+  const fetchAndRenderEvents = () => {
     getEvents().then((fetchedEvents) => {
       const formattedEvents = fetchedEvents.map((event) => ({
         id: event.id,
@@ -51,7 +53,7 @@ export const CalendarComponent = () => {
     });
   };
 
-  const fetchCategoriesFromDatabase = () => {
+  const fetchAndRenderCategories = () => {
     getCategories().then((fetchedCategories) => {
       setCategories(fetchedCategories);
     });
@@ -97,12 +99,12 @@ export const CalendarComponent = () => {
     setEvents([...events, eventToSubmit]);
     setModalVisible(false);
     postEvent(eventToSubmit).then(() => {
-      fetchEventsFromDatabase();
+      fetchAndRenderEvents();
     });
   };
 
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
+  const handleInputChange = (event) => {
+    const { name, value, type, checked } = event.target;
     setNewEvent((prevEvent) => ({
       ...prevEvent,
       [name]: type === "checkbox" ? checked : value,
@@ -128,148 +130,20 @@ export const CalendarComponent = () => {
       </div>
 
       {modalVisible && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={handleCloseModal}>
-              &times;
-            </span>
-            <h2>Schedule Event</h2>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                handleSubmitEvent();
-              }}
-            >
-              <label>
-                Event Title:
-                <input
-                  type="text"
-                  name="title"
-                  value={newEvent.title}
-                  onChange={handleInputChange}
-                  required
-                />
-              </label>
-              <br />
-              <label>
-                Start Date:
-                <input
-                  type="date"
-                  name="start"
-                  value={newEvent.start}
-                  onChange={handleInputChange}
-                  required
-                />
-              </label>
-              <br />
-              <label>
-                End Date:
-                <input
-                  type="date"
-                  name="end"
-                  value={newEvent.end}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <br />
-              <label>
-                Start Time:
-                <input
-                  type="time"
-                  name="time"
-                  value={newEvent.time}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <br />
-              <label>
-                <input
-                  type="checkbox"
-                  name="recurring"
-                  checked={newEvent.recurring}
-                  onChange={handleInputChange}
-                />
-                Recurring Event
-              </label>
-              {newEvent.recurring && (
-                <>
-                  <label>
-                    Frequency:
-                    <select
-                      name="frequency"
-                      value={newEvent.frequency}
-                      onChange={handleInputChange}
-                    >
-                      <option value="daily">Daily</option>
-                      <option value="weekly">Weekly</option>
-                      <option value="monthly">Monthly</option>
-                    </select>
-                  </label>
-                </>
-              )}
-              <br />
-              <label>
-                Category:
-                <select
-                  name="categoryId"
-                  value={newEvent.categoryId}
-                  onChange={handleInputChange}
-                  required
-                >
-                  <option value="">Select Category</option>
-                  {categories.map((category) => (
-                    <option key={category.id} value={category.id}>
-                      {category.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <br />
-              <button type="submit">Add Event</button>
-            </form>
-          </div>
-        </div>
+        <EventCreationModal
+          newEvent={newEvent}
+          categories={categories}
+          handleInputChange={handleInputChange}
+          handleSubmitEvent={handleSubmitEvent}
+          handleCloseModal={handleCloseModal}
+        />
       )}
+
       {eventDetailsModalVisible && selectedEvent && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={handleCloseEventDetailsModal}>
-              &times;
-            </span>
-            <h2>Event Details</h2>
-            <p>
-              <strong>Title:</strong> {selectedEvent.title}
-            </p>
-            <p>
-              <strong>Description:</strong> {selectedEvent.description || "N/A"}
-            </p>
-            <p>
-              <strong>User:</strong> {selectedEvent.user.firstName}{" "}
-              {selectedEvent.user.lastName}
-            </p>
-            <p>
-              <strong>Start Date:</strong> {selectedEvent.start}
-            </p>
-            <p>
-              <strong>End Date:</strong> {selectedEvent.end || "N/A"}
-            </p>
-            <p>
-              <strong>Time:</strong> {selectedEvent.time || "N/A"}
-            </p>
-            <p>
-              <strong>Recurring:</strong>{" "}
-              {selectedEvent.recurring ? "Yes" : "No"}
-            </p>
-            {selectedEvent.recurring && (
-              <p>
-                <strong>Frequency:</strong> {selectedEvent.frequency}
-              </p>
-            )}
-            <p>
-              <strong>Created At:</strong> {selectedEvent.createdAt}
-            </p>
-          </div>
-        </div>
+        <EventDetailsModal
+          selectedEvent={selectedEvent}
+          handleCloseEventDetailsModal={handleCloseEventDetailsModal}
+        />
       )}
     </div>
   );
