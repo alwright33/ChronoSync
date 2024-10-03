@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import { getUsersByGroup } from "../../services/userServices";
 import "./UserGroups.css";
 
 export const UserGroups = ({ currentUser }) => {
   const [groups, setGroups] = useState([]);
   const [members, setMembers] = useState({});
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (currentUser?.id) {
@@ -33,7 +33,7 @@ export const UserGroups = ({ currentUser }) => {
   }, [currentUser]);
 
   const handleCreateGroup = () => {
-    navigate("/create-group"); // Navigate to the create group view
+    navigate("/create-group");
   };
 
   return (

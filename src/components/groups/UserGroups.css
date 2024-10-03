@@ -1,12 +1,10 @@
-/* Button container to move button to the left */
 .button-container {
   display: flex;
   justify-content: flex-start;
   width: 100%;
-  margin-bottom: 20px; /* Adds space between the button and the groups */
+  margin-bottom: 20px; 
 }
 
-/* Container for the entire groups section */
 .groups-container {
   display: flex;
   flex-direction: column;
