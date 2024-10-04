@@ -70,7 +70,7 @@
 }
 
 .auth-button:hover {
-  background-color: #ff6347; /* Slightly darker coral */
+  background-color: #ff6347; 
 }
 
 .register-link {
@@ -78,8 +78,8 @@
   text-align: center;
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.9em;
-  display: block; /* Ensures it's a block element below the form */
-  width: 100%; /* Full width to align with form */
+  display: block; 
+  width: 100%;
 }
 
 .register-link a {
@@ -88,11 +88,9 @@
 }
 
 .register-link a:hover {
-  color: #ff6347; /* Darker coral on hover */
+  color: #ff6347; 
 }
 
-
-/* Responsive Design */
 @media (max-width: 600px) {
   .glass-card h1 {
     font-size: 2rem;

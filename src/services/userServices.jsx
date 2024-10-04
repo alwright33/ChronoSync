@@ -25,3 +25,9 @@ export const getUsersByGroup = () => {
     `http://localhost:8088/userGroups?_expand=user&_expand=group`
   ).then((response) => response.json());
 };
+
+export const getUserById = (userId) => {
+  return fetch(`http://localhost:8088/users/${userId}`).then((response) =>
+    response.json()
+  );
+};

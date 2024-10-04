@@ -36,6 +36,10 @@ export const UserGroups = ({ currentUser }) => {
     navigate("/create-group");
   };
 
+  const handleUserClick = (userId) => {
+    navigate(`/user-events/${userId}`);
+  };
+
   return (
     <main className="user-groups-main">
       <section className="groups-container">
@@ -57,11 +61,17 @@ export const UserGroups = ({ currentUser }) => {
               <div>
                 {members[group.id]?.length > 0 ? (
                   <ul className="group-members-list">
-                    {members[group.id].map((member) => (
-                      <li key={member.user.id}>
-                        {member.user.firstName} {member.user.lastName}
-                      </li>
-                    ))}
+                    {members[group.id]
+                      .filter((member) => member.user.id !== currentUser.id)
+                      .map((member) => (
+                        <li
+                          key={member.user.id}
+                          onClick={() => handleUserClick(member.user.id)}
+                          className="clickable-user"
+                        >
+                          {member.user.firstName} {member.user.lastName}
+                        </li>
+                      ))}
                   </ul>
                 ) : (
                   <p>No members in this group.</p>

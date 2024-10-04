@@ -6,7 +6,8 @@ import { useState, useEffect } from "react";
 import { UserGroups } from "../components/groups/UserGroups";
 import { CreateGroup } from "../components/groups/CreateGroup";
 import { MySchedule } from "../components/schedules/MySchedule";
-import { CalendarPage } from "../components/calendar/Calendar";
+import { CreateEvent } from "../components/events/CreateEvent";
+import { UserEvents } from "../components/events/Events";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -32,10 +33,6 @@ export const ApplicationViews = () => {
       >
         <Route path="/" element={<Home />} />
         <Route
-          path="calendar"
-          element={<CalendarPage currentUser={currentUser} />}
-        />
-        <Route
           path="groups"
           element={<UserGroups currentUser={currentUser} />}
         />
@@ -47,6 +44,11 @@ export const ApplicationViews = () => {
           path="my-schedule"
           element={<MySchedule currentUser={currentUser} />}
         />
+        <Route
+          path="create-event"
+          element={<CreateEvent currentUser={currentUser} />}
+        />
+        <Route path="/user-events/:userId" element={<UserEvents />} />
       </Route>
     </Routes>
   );

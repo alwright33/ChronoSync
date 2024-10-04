@@ -2,8 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getUserByEmail } from "../../services/userServices";
-import "./Login.css"; // Custom CSS for the login page
-
+import "./Login.css";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -74,7 +73,6 @@ export const Login = () => {
           </fieldset>
         </form>
 
-        {/* Place the register link inside the same container */}
         <section className="register-link">
           Not a member? <Link to="/register">Click here to sign up.</Link>
         </section>

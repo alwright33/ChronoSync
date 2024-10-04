@@ -27,11 +27,6 @@ export const NavBar = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/calendar" onClick={toggleDropdown}>
-                  Calendar
-                </Link>
-              </li>
-              <li>
                 <Link to="/groups" onClick={toggleDropdown}>
                   My Groups
                 </Link>
