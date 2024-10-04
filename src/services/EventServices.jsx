@@ -4,6 +4,12 @@ export const getEvents = () => {
   );
 };
 
+export const getEventById = (eventId) => {
+  return fetch(`http://localhost:8088/events/${eventId}`).then((response) =>
+    response.json()
+  );
+};
+
 export const postEvent = (newEvent) => {
   return fetch(`http://localhost:8088/events`, {
     method: "POST",
