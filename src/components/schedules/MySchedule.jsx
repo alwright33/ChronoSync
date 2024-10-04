@@ -39,30 +39,54 @@ export const MySchedule = ({ currentUser }) => {
           Create New Event
         </button>
       </header>
+
       {mySchedule.length > 0 ? (
         <ul className="schedule-list">
           {mySchedule.map((event) => (
             <li key={event.id}>
               <div className="event-item">
                 <h2>{event.title}</h2>
-                <button
-                  onClick={() => updateEvent(event.id)}
-                  className="update-button"
-                >
-                  Update
-                </button>
-                <button
-                  onClick={() => deleteEvent(event.id)}
-                  className="delete-button"
-                >
-                  Delete
-                </button>
+                <p>{event.description}</p>
+                <p>
+                  <strong>Start Date:</strong> {event.start}
+                </p>
+                <p>
+                  <strong>End Date:</strong> {event.end || "N/A"}
+                </p>
+                <p>
+                  <strong>Time:</strong> {event.time || "N/A"}
+                </p>
+                <p>
+                  <strong>Recurring:</strong> {event.recurring ? "Yes" : "No"}
+                </p>
+                {event.recurring && (
+                  <p>
+                    <strong>Frequency:</strong> {event.frequency}
+                  </p>
+                )}
+                <p>
+                  <strong>Created At:</strong> {event.createdAt}
+                </p>
+                <div className="button-container">
+                  <button
+                    onClick={() => updateEvent(event.id)}
+                    className="update-button"
+                  >
+                    Update
+                  </button>
+                  <button
+                    onClick={() => deleteEvent(event.id)}
+                    className="delete-button"
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             </li>
           ))}
         </ul>
       ) : (
-        <p>No events to display.</p>
+        <p className="no-events">No events to display.</p>
       )}
     </div>
   );
