@@ -138,16 +138,7 @@
 .logo-img {
   width: 75px;
   height: auto;
-  margin-left: 10px;
-  animation: rotateLogo 5s infinite linear; 
+  margin-left: 10px; 
 }
 
-@keyframes rotateLogo {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 

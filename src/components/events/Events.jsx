@@ -26,7 +26,7 @@ export const UserEvents = () => {
       {userEvents.length > 0 ? (
         <ul className="user-events-list">
           {userEvents.map((event) => (
-            <li key={event.id}>
+            <li key={event.id} className="event-card">
               <h2>{event.title}</h2>
               <p>{event.description}</p>
               <p>
@@ -34,6 +34,20 @@ export const UserEvents = () => {
               </p>
               <p>
                 <strong>End Date:</strong> {event.end || "N/A"}
+              </p>
+              <p>
+                <strong>Time:</strong> {event.time || "N/A"}
+              </p>
+              <p>
+                <strong>Recurring:</strong> {event.recurring ? "Yes" : "No"}
+              </p>
+              {event.recurring && (
+                <p>
+                  <strong>Frequency:</strong> {event.frequency}
+                </p>
+              )}
+              <p>
+                <strong>Created At:</strong> {event.createdAt}
               </p>
             </li>
           ))}
