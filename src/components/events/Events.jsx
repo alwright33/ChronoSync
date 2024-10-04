@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getEventsByUserId } from "../../services/EventServices";
 import { getUserById } from "../../services/userServices";
+import "./Events.css";
 
 export const UserEvents = () => {
   const { userId } = useParams();
@@ -38,7 +39,7 @@ export const UserEvents = () => {
           ))}
         </ul>
       ) : (
-        <p>No events for this user.</p>
+        <p className="no-events">No events for this user.</p>
       )}
     </div>
   );
