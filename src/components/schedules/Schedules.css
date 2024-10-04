@@ -1,27 +1,22 @@
-.schedule-container {
-  margin: 20px;
+.create-event-button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.schedule-header {
-  margin-bottom: 20px;
-}
-
-.schedule-list {
-  list-style-type: none;
-  padding: 0;
+.create-event-button:hover {
+  background-color: #45a049;
 }
 
 .event-item {
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-}
-
-.event-actions {
   display: flex;
-  gap: 10px;
-  margin-top: 10px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
 }
 
 .update-button, .delete-button {
@@ -32,24 +27,19 @@
 }
 
 .update-button {
-  background-color: #4caf50;
-  color: white;
-}
-
-.delete-button {
-  background-color: #f44336;
+  background-color: #f0ad4e;
   color: white;
 }
 
 .update-button:hover {
-  background-color: #45a049;
+  background-color: #ec971f;
+}
+
+.delete-button {
+  background-color: #d9534f;
+  color: white;
 }
 
 .delete-button:hover {
-  background-color: #e53935;
-}
-
-.no-events {
-  font-size: 16px;
-  color: #888;
+  background-color: #c9302c;
 }

@@ -24,6 +24,10 @@ export const MySchedule = ({ currentUser }) => {
     });
   };
 
+  const updateEvent = (eventId) => {
+    navigate(`/update-event/${eventId}`);
+  };
+
   return (
     <div className="schedule-container">
       <header className="schedule-header">
@@ -41,6 +45,12 @@ export const MySchedule = ({ currentUser }) => {
             <li key={event.id}>
               <div className="event-item">
                 <h2>{event.title}</h2>
+                <button
+                  onClick={() => updateEvent(event.id)}
+                  className="update-button"
+                >
+                  Update
+                </button>
                 <button
                   onClick={() => deleteEvent(event.id)}
                   className="delete-button"

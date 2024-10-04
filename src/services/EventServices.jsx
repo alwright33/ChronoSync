@@ -25,17 +25,7 @@ export const getGroupEvents = (groupId) => {
 export const deleteEventById = (eventId) => {
   return fetch(`http://localhost:8088/events/${eventId}`, {
     method: "DELETE",
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Failed to delete event");
-      }
-      return true;
-    })
-    .catch((error) => {
-      console.error("Error deleting event:", error);
-      return false;
-    });
+  }).then((response) => response.json());
 };
 
 export const updateEventById = (eventId, updatedEvent) => {
@@ -52,4 +42,10 @@ export const updateEventById = (eventId, updatedEvent) => {
     .then((updatedData) => {
       return updatedData;
     });
+};
+
+export const getEventsByUserId = (userId) => {
+  return fetch(
+    `http://localhost:8088/events?_expand=user&userId=${userId}`
+  ).then((response) => response.json());
 };
