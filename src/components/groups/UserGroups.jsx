@@ -43,7 +43,7 @@ export const UserGroups = ({ currentUser }) => {
   return (
     <main className="user-groups-main">
       <section className="groups-container">
-        <div className="button-container">
+        {/* <div className="button-container">
           <button
             type="button"
             className="group-button"
@@ -51,7 +51,7 @@ export const UserGroups = ({ currentUser }) => {
           >
             Create New Group
           </button>
-        </div>
+        </div> */}
         {groups.length > 0 ? (
           groups.map((group) => (
             <div key={group.id} className="group">

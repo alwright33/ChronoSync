@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 import { Home } from "../components/home/Home";
 import { useState, useEffect } from "react";
 import { UserGroups } from "../components/groups/UserGroups";
-import { CreateGroup } from "../components/groups/CreateGroup";
+// import { CreateGroup } from "../components/groups/CreateGroup";
 import { MySchedule } from "../components/schedules/MySchedule";
 import { CreateEvent } from "../components/events/CreateEvent";
 import { UserEvents } from "../components/events/Events";
@@ -37,10 +37,10 @@ export const ApplicationViews = () => {
           path="groups"
           element={<UserGroups currentUser={currentUser} />}
         />
-        <Route
+        {/* <Route
           path="create-group"
           element={<CreateGroup currentUser={currentUser} />}
-        />
+        /> */}
         <Route
           path="my-schedule"
           element={<MySchedule currentUser={currentUser} />}
